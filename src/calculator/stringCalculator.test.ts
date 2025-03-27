@@ -11,3 +11,7 @@ test("should return number itself for single number input", () => {
 test("should return sum of two comma-separated numbers", () => {
   expect(addString("1,2")).toBe(3);
 });
+
+test("should return sum of multiple numbers ", () => {
+  expect(addString("2,3,5,5")).toBe(15);
+});
