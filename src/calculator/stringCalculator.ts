@@ -23,4 +23,13 @@ export function addString(numbers: string): number {
     }
     return numberArr;
   }
+
+  let newNumbers: number[]=[];
+
+  if(numbers.startsWith("//")){
+    const delimiterEndIndex =
+    numbers.indexOf("\n") === -1
+      ? numbers.indexOf("\\n") - 1
+      : numbers.indexOf("\n");
+  }
 }
