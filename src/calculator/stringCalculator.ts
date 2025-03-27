@@ -40,6 +40,8 @@ export function addString(numbers: string): number {
     newNumbers = parseNumbers(inputWithCommas.replace(/\n/g, ","), ",");
   }
 
+  const negativeNumbers = newNumbers.filter((num) => num < 0);
+
   let sum = 0;
   for (let i = 0; i < newNumbers.length; i++) {
     sum += Number(newNumbers[i]);
