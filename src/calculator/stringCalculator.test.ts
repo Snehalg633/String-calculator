@@ -13,5 +13,5 @@ test("should return sum of two comma-separated numbers", () => {
 });
 
 test("should return sum of multiple numbers ", () => {
-  expect(addString("2,3,5,5")).toBe(15);
+  expect(addString("2,3,4,5")).toBe(14);
 });
