@@ -31,12 +31,14 @@ export function addString(numbers: string): number {
 
     const inputWithCommas = numbersStr.replace(new RegExp(delimiter, "g"), ",");
     newNumbers = parseNumbers(inputWithCommas.replace(/\\n/g, "\n"), ",");
-  } 
+  } else {
+    const inputWithCommas = numbers.replace(/\\n/g, "\n");
+    newNumbers = parseNumbers(inputWithCommas.replace(/\n/g, ","), ",");
+  }
 
   let sum = 0;
   for (let i = 0; i < newNumbers.length; i++) {
     sum += Number(newNumbers[i]);
   }
   return sum;
-
 }
