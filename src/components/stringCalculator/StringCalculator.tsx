@@ -4,9 +4,18 @@ import { addString } from "../../calculator/stringCalculator";
 const StringCalculator = () => {
   const [input, setInput] = useState<string>("");
   const [result, setResult] = useState<number | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleCalculate = () => {
-    setResult(addString(input));
+    try {
+      setResult(addString(input));
+      setError(null);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message);
+        setResult(null);
+      }
+    }
   };
 
   return (
@@ -20,6 +29,7 @@ const StringCalculator = () => {
       />
       <button onClick={handleCalculate}>Calculate</button>
       <p>Result: {result}</p>
+      {error && <div>Error: {error}</div>}
     </div>
   );
 };
