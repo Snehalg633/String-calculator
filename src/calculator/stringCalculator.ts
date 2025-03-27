@@ -4,12 +4,6 @@ export function addString(numbers: string): number {
   //   const inputWithCommas = numbers.replace(/\n/g, ",");
   //   const numberArr = inputWithCommas.split(",");
 
-  //   let sum = 0;
-  //   for (let i = 0; i < numberArr.length; i++) {
-  //     sum += Number(numberArr[i]);
-  //   }
-  //   return sum;
-
   function parseNumbers(str: string, delimiter: string): number[] {
     const numstrings = str.split(delimiter);
 
@@ -37,5 +31,12 @@ export function addString(numbers: string): number {
 
     const inputWithCommas = numbersStr.replace(new RegExp(delimiter, "g"), ",");
     newNumbers = parseNumbers(inputWithCommas.replace(/\\n/g, "\n"), ",");
+  } 
+
+  let sum = 0;
+  for (let i = 0; i < newNumbers.length; i++) {
+    sum += Number(newNumbers[i]);
   }
+  return sum;
+
 }
