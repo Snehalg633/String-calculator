@@ -23,3 +23,9 @@ test("should handle new line as separator", () => {
 test("should support different delimiter ", () => {
   expect(addString("//|\n3|4|5")).toBe(12);
 });
+
+test("should throws error for negative numbers", () => {
+  expect(() => addString("1,-2,3-4")).toThrow(
+    "Negative numbers are not allowed: -2,-4"
+  );
+});
