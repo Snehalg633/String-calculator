@@ -18,6 +18,10 @@ export function addString(numbers: string): number {
     return numberArr;
   }
 
+  function throwNegativeNumberError(negatives: number[]): void {
+    throw new Error(`Negative numbers are not allowed: ${negatives.join(",")}`);
+  }
+
   let newNumbers: number[] = [];
 
   if (numbers.startsWith("//")) {
