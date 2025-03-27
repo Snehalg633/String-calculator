@@ -28,6 +28,7 @@ describe("StringCalculator Component", () => {
 
   test("should displays result when clicking the calculate button", () => {
     render(<StringCalculator />);
+
     (addString as jest.Mock).mockReturnValue(3);
 
     const inputBox = screen.getByTestId("numbers-input");
@@ -42,6 +43,7 @@ describe("StringCalculator Component", () => {
   test("should handle different inputs correctlly", async () => {
     render(<StringCalculator />);
     (addString as jest.Mock).mockReturnValue(6);
+
     const inputBox = screen.getByTestId("numbers-input");
     const button = screen.getByText("Calculate");
 
@@ -65,11 +67,11 @@ describe("StringCalculator Component", () => {
   });
 
   test("displays an error message when input contains negative numbers", () => {
+    render(<StringCalculator />);
     (addString as jest.Mock).mockImplementation(() => {
       throw new Error("negative numbers not allowed: -2");
     });
 
-    render(<StringCalculator />);
     const inputBox = screen.getByTestId("numbers-input");
     const button = screen.getByText("Calculate");
 
