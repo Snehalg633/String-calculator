@@ -25,7 +25,7 @@ test("should support different delimiter ", () => {
 });
 
 test("should throws error for negative numbers", () => {
-  expect(() => addString("1,-2,3-4")).toThrow(
+  expect(() => addString("1,-2,3,-4")).toThrow(
     "Negative numbers are not allowed: -2,-4"
   );
 });

@@ -42,6 +42,10 @@ export function addString(numbers: string): number {
 
   const negativeNumbers = newNumbers.filter((num) => num < 0);
 
+  if (negativeNumbers.length > 0) {
+    throwNegativeNumberError(negativeNumbers);
+  }
+
   let sum = 0;
   for (let i = 0; i < newNumbers.length; i++) {
     sum += Number(newNumbers[i]);
