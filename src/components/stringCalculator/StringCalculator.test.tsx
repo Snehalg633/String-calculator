@@ -63,4 +63,21 @@ describe("StringCalculator Component", () => {
 
     expect(screen.getByText("Result: 12")).toBeInTheDocument();
   });
+
+  test("displays an error message when input contains negative numbers", () => {
+    (addString as jest.Mock).mockImplementation(() => {
+      throw new Error("negative numbers not allowed: -2");
+    });
+
+    render(<StringCalculator />);
+    const inputBox = screen.getByTestId("numbers-input");
+    const button = screen.getByText("Calculate");
+
+    fireEvent.change(inputBox, { target: { value: "1,-2,3" } });
+    fireEvent.click(button);
+
+    expect(
+      screen.getByText(/error: negative numbers not allowed: -2/i)
+    ).toBeInTheDocument();
+  });
 });
