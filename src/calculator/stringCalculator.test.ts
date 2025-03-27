@@ -19,3 +19,7 @@ test("should return sum of multiple numbers ", () => {
 test("should handle new line as separator", () => {
   expect(addString("1\n2,3")).toBe(6);
 });
+
+test("should support different delimiter ", () => {
+  expect(addString("//|\n3|4|5")).toBe(12);
+});
