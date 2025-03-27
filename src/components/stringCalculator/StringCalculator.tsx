@@ -8,6 +8,7 @@ const StringCalculator = () => {
         type="text"
         placeholder="Enter numbers..."
       />
+      <button>Calculate</button>
     </div>
   );
 };
