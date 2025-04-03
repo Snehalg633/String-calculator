@@ -29,3 +29,7 @@ test("should throws error for negative numbers", () => {
     "Negative numbers are not allowed: -2,-4"
   );
 });
+
+test("should skip numbers greater than and equal to 1000", () => {
+  expect(addString("1,2,1000,1001,1007")).toBe(3);
+});
