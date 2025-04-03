@@ -21,7 +21,7 @@ export function addString(numbers: string): number {
     return str
       .split(delimiter)
       .map((item) => Number(item))
-      .filter((el) => !isNaN(el));
+      .filter((el) => !isNaN(el) && el < 1000);
   };
 
   const throwNegativeNumberError = (negatives: number[]): void => {
