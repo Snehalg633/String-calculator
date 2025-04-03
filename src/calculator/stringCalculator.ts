@@ -11,6 +11,8 @@ export function addString(numbers: string): number {
   };
 
   let newNumbers: number[];
+  let delimiter = "\n";
+  let numbersStr = numbers;
 
   if (numbers.startsWith("//")) {
     const delimiterEndIndex =
@@ -18,15 +20,12 @@ export function addString(numbers: string): number {
         ? numbers.indexOf("\\n") - 1
         : numbers.indexOf("\n");
 
-    const delimiter = numbers.substring(2, delimiterEndIndex);
-    const numbersStr = numbers.substring(delimiterEndIndex + 1);
-
-    const inputWithCommas = numbersStr.replace(new RegExp(delimiter, "g"), ",");
-    newNumbers = parseNumbers(inputWithCommas.replace(/\\n/g, "\n"), ",");
-  } else {
-    const inputWithCommas = numbers.replace(/\\n/g, "\n");
-    newNumbers = parseNumbers(inputWithCommas.replace(/\n/g, ","), ",");
+    delimiter = numbers.substring(2, delimiterEndIndex);
+    numbersStr = numbers.substring(delimiterEndIndex + 1);
   }
+
+  const inputWithCommas = numbersStr.replace(new RegExp(delimiter, "g"), ",");
+  newNumbers = parseNumbers(inputWithCommas.replace(/\\n/g, "\n"), ",");
 
   const negativeNumbers = newNumbers.filter((num) => num < 0);
 
