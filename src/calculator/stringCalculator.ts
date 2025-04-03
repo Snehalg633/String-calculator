@@ -1,4 +1,22 @@
 export function addString(numbers: string): number {
+  function convertNumb(numbers: string) {
+    let delimiter = "\n";
+    let numbersStr = numbers;
+
+    if (numbers.startsWith("//")) {
+      const delimiterEndIndex =
+        numbers.indexOf("\n") === -1
+          ? numbers.indexOf("\\n") - 1
+          : numbers.indexOf("\n");
+
+      delimiter = numbers.substring(2, delimiterEndIndex);
+      numbersStr = numbers.substring(delimiterEndIndex + 1);
+    }
+
+    const inputWithCommas = numbersStr.replace(new RegExp(delimiter, "g"), ",");
+    return parseNumbers(inputWithCommas.replace(/\\n/g, "\n"), ",");
+  }
+
   const parseNumbers = (str: string, delimiter: string): number[] => {
     return str
       .split(delimiter)
@@ -10,22 +28,7 @@ export function addString(numbers: string): number {
     throw new Error(`Negative numbers are not allowed: ${negatives.join(",")}`);
   };
 
-  let newNumbers: number[];
-  let delimiter = "\n";
-  let numbersStr = numbers;
-
-  if (numbers.startsWith("//")) {
-    const delimiterEndIndex =
-      numbers.indexOf("\n") === -1
-        ? numbers.indexOf("\\n") - 1
-        : numbers.indexOf("\n");
-
-    delimiter = numbers.substring(2, delimiterEndIndex);
-    numbersStr = numbers.substring(delimiterEndIndex + 1);
-  }
-
-  const inputWithCommas = numbersStr.replace(new RegExp(delimiter, "g"), ",");
-  newNumbers = parseNumbers(inputWithCommas.replace(/\\n/g, "\n"), ",");
+  let newNumbers: number[] = convertNumb(numbers);
 
   const negativeNumbers = newNumbers.filter((num) => num < 0);
 
